@@ -1,4 +1,4 @@
 tweetsfeatures
 ==============
 
-Calculate Bag-of-Words features from a JSON file.
+Calculates Bag-of-Words features from saved tweets in a JSON file.
