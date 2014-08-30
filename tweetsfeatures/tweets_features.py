@@ -26,7 +26,7 @@ twitter_data.close()
 print "Tokenizing and counting words occurrences... "
 vectorizer = CountVectorizer(min_df=1)
 X = vectorizer.fit_transform(corpus)
-print X
+
 print "Dimensionality reduction step..."
 svd = TruncatedSVD(n_components = components_num)
 try:
