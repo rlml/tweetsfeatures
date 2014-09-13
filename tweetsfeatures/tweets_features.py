@@ -5,7 +5,18 @@ from sklearn.decomposition import TruncatedSVD
 from sklearn.random_projection import sparse_random_matrix
 
 def calc_features(tweet_file, components_num=300):
+     """Calculates the matrix of feature vectors extracted from a JSON file with tweets using a bag-of-words approach. 
+    
 
+    :param tweet_file: the name of the JSON file
+    :type tweet_file: string
+
+    :param components_num: the number of components used in the Truncated SVD algorithm.
+    :type arg2: integer
+
+    :return: none 
+    :rtype: none
+    """
     corpus=[]
     ids=[]
     twitter_data=open(tweet_file)
