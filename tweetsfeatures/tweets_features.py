@@ -14,8 +14,9 @@ def calc_features(tweet_file, components_num=300):
     :param components_num: the number of components used in the Truncated SVD algorithm.
     :type arg2: integer
 
-    :return: none 
-    :rtype: none
+    :return: saves two files in the current directory: a file containing the matrix of feature vectors 
+    and  a file containing the tweets id.
+    :rtype: csv files
     """
     corpus=[]
     ids=[]
