@@ -4,8 +4,8 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.decomposition import TruncatedSVD
 from sklearn.random_projection import sparse_random_matrix
 
-def calc_features(tweet_file, components_num=300):
-     """Calculates the matrix of feature vectors extracted from a JSON file with tweets using a bag-of-words approach. 
+def calc_features(tweet_file, components_num=5):
+    """Calculates the matrix of feature vectors extracted from a JSON file with tweets using a bag-of-words approach. 
     
 
     :param tweet_file: the name of the JSON file
@@ -18,6 +18,7 @@ def calc_features(tweet_file, components_num=300):
     and  a file containing the tweets id.
     :rtype: csv files
     """
+    
     corpus=[]
     ids=[]
     twitter_data=open(tweet_file)
@@ -59,8 +60,19 @@ def calc_features(tweet_file, components_num=300):
     else:
         print "Saving files..."
         try:
-            numpy.savetxt("tweets_id.csv",numpy.array(ids).astype(int), fmt='%i', delimiter=",")
-            numpy.savetxt("features.csv",X, delimiter=",")
+
+            
+            outfile = open("ids_and_features.csv", 'w')
+            for i in range(X.shape[0]):
+                line = str(ids[i])
+                for j in range(X.shape[1]):
+                    line = line + ',{0:6.4f}'.format(X[i,j])
+                
+                outfile.write(line+'\n')
+ 
+             
+
+
         except IOError as e:
             print "I/O error({0}): {1}".format(e.errno, e.strerror)
         else:
